@@ -1,4 +1,5 @@
-st
-st.o
-x.o
 config.h
+x.o
+boxdraw.o
+st.o
+st
