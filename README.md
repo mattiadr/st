@@ -16,3 +16,24 @@ Afterwards enter the following command to build and install st (if necessary as 
 ```bash
 make clean install
 ```
+
+or you can install it [from the AUR](https://aur.archlinux.org/packages/st-mattiadr).
+
+## Xresources
+Various options can be configured from `~/.Xresources` using the syntax `st.option: value`:
+- `font`
+- `color0 ` to `color15`
+- `foreground`
+- `background`
+- `cursor` - cursor color
+- `reverseCursor` - reverse cursor color
+- `termname`
+- `shell`
+- `xfps` - frames per second st should at maximum draw to the screen
+- `actionfps`
+- `blinktimeout` - blinking timeout (set to 0 to disable blinking) for the terminal blinking attribute
+- `bellvolume`
+- `tabspaces`
+- `borderpx`
+- `cwscale` - Kerning / character bounding-box multipliers
+- `chscale`
