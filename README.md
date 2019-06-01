@@ -5,6 +5,7 @@ Fork of the [suckless terminal (st)](https://st.suckless.org/) with additional p
 - [scrollback](https://st.suckless.org/patches/scrollback/)
 - [xresources](https://st.suckless.org/patches/xresources/)
 - [boxdraw](https://st.suckless.org/patches/boxdraw/)
+- [right click to plumb](https://st.suckless.org/patches/right_click_to_plumb/)
 
 ## Requirements
 In order to build st you need the Xlib header files.
@@ -37,3 +38,10 @@ Various options can be configured from `~/.Xresources` using the syntax `st.opti
 - `borderpx`
 - `cwscale` - Kerning / character bounding-box multipliers
 - `chscale`
+
+## Right click to plumb
+When you right click the selected text will be plumbed to the set command, if no text is selected then the word below the cursor will be automatically selected.
+
+You can set the command to execute in the config.h, it defaults to `xdg-open %s`.
+
+You have to include `%s` in the command, it will be substituted with the selected text.

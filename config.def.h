@@ -69,6 +69,12 @@ const int boxdraw_bold = 0;
 const int boxdraw_braille = 0;
 
 /*
+ * command executed when right click is pressed, %s will be substituted with
+ * current selection.
+ */
+static char *plumber_cmd = "xdg-open %s";
+
+/*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
  * it
  */

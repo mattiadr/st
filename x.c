@@ -225,6 +225,8 @@ static XWindow xw;
 static XSelection xsel;
 static TermWindow win;
 
+extern char *plumber_cmd;
+
 /* Font Ring Cache */
 enum {
 	FRC_NORMAL,
@@ -667,6 +669,8 @@ xsetsel(char *str)
 void
 brelease(XEvent *e)
 {
+	char cmd[100 + strlen(plumber_cmd)];
+
 	if (IS_SET(MODE_MOUSE) && !(e->xbutton.state & forceselmod)) {
 		mousereport(e);
 		return;
@@ -676,6 +680,18 @@ brelease(XEvent *e)
 		selpaste(NULL);
 	else if (e->xbutton.button == Button1)
 		mousesel(e, 1);
+	else if (e->xbutton.button == Button3) {
+		if (!getsel())
+			selstart(evcol(e), evrow(e), SNAP_WORD);
+		switch(fork()) {
+		case -1:
+			return;
+		case 0:
+			snprintf(cmd, 99, plumber_cmd, getsel());
+			execvp("sh", (char *const []) { "/bin/sh", "-c", cmd, NULL });
+			exit(127);
+		}
+	}
 }
 
 void
